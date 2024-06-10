@@ -9,16 +9,17 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Component;
 
 import com.example.app.model.User;
+import com.example.app.utils.Constants;
 
 @Component
-public class DatabaseUserReader {
+public class ProcessUserReader {
 
-    @Bean
+    @Bean(Constants.PROCESS_JOB_READER_BEAN)
     public JdbcCursorItemReader<User> jdbcCursorItemReader(DataSource dataSource) {
         return new JdbcCursorItemReaderBuilder<User>()
-                .name("userJdbcCursorItemReader")
+                .name(Constants.PROCESS_JOB_READER_BEAN)
                 .dataSource(dataSource)
-                .sql("SELECT id, name, email FROM users")
+                .sql(Constants.READ_USER_DATA_TO_PROCESS)
                 .rowMapper(new BeanPropertyRowMapper<>(User.class))
                 .build();
     }

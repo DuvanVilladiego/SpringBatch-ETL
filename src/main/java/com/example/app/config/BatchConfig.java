@@ -11,37 +11,36 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import com.example.app.utils.Constants;
+
 @Configuration
 @EnableBatchProcessing
 @EnableScheduling
 public class BatchConfig {
 
-    @Autowired
-    private JobLauncher jobLauncher;
+	@Autowired
+	private JobLauncher jobLauncher;
 
-    @Autowired
-    @Qualifier("importUserJob")
-    private Job importUserJob;
+	@Autowired
+	@Qualifier(Constants.IMPORT_USER_JOB_BEAN)
+	private Job importUserJob;
 
-    @Autowired
-    @Qualifier("processUserJob")
-    private Job processUserJob;
+	@Autowired
+	@Qualifier(Constants.PROCESS_JOB_BEAN)
+	private Job processUserJob;
 
-    @Scheduled(fixedRate = 10000)
-    public void executeImportJob() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("JobID", String.valueOf(System.currentTimeMillis()))
-                .toJobParameters();
-        jobLauncher.run(importUserJob, jobParameters);
-    }
+	@Scheduled(fixedRate = 10000)
+	public void executeImportJob() throws Exception {
+		JobParameters jobParameters = new JobParametersBuilder()
+				.addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();
+		jobLauncher.run(importUserJob, jobParameters);
+	}
 
-    /*
-    @Scheduled(fixedRate = 15000)
-    public void executeProcessJob() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("JobID", String.valueOf(System.currentTimeMillis()))
-                .toJobParameters();
-        jobLauncher.run(processUserJob, jobParameters);
-    }
-    */
+	@Scheduled(fixedRate = 15000)
+	public void executeProcessJob() throws Exception {
+		JobParameters jobParameters = new JobParametersBuilder()
+				.addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();
+		jobLauncher.run(processUserJob, jobParameters);
+	}
+
 }
