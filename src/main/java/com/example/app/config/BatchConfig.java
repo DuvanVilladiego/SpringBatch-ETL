@@ -17,7 +17,7 @@ import com.example.app.utils.Constants;
 @EnableBatchProcessing
 @EnableScheduling
 public class BatchConfig {
-
+	
 	@Autowired
 	private JobLauncher jobLauncher;
 
@@ -29,14 +29,14 @@ public class BatchConfig {
 	@Qualifier(Constants.PROCESS_JOB_BEAN)
 	private Job processUserJob;
 
-	@Scheduled(fixedRate = 10000)
+	@Scheduled(fixedRateString = "${import.fixedrate}")
 	public void executeImportJob() throws Exception {
 		JobParameters jobParameters = new JobParametersBuilder()
 				.addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();
 		jobLauncher.run(importUserJob, jobParameters);
 	}
 
-	@Scheduled(fixedRate = 15000)
+	@Scheduled(fixedRateString = "${etl.fixedrate}")
 	public void executeProcessJob() throws Exception {
 		JobParameters jobParameters = new JobParametersBuilder()
 				.addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();
