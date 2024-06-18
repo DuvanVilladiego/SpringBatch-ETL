@@ -98,7 +98,7 @@ src
 2. **Configuraciones la base de datos:**
   - Ejecute los scripts `schema-drop-postgresql` y `user-table`.
   - Asegúrate de que la configuración de la base de datos en `application.properties` sea correcta.
-  - Es posible personalizar los tiempos de espera de cada Job ya que trabajan de forma independiente, los valroes estan en `milisegundos`.
+  - Los tiempos de espera de los Jobs ImportUser y ProcessUser estan configurados en `10000` y `15000` milisegundos respectivamente.
   - Es posible personalizar el ruta del archivo cvs desde donde se extraeran los datos.
 
     ```properties
@@ -118,10 +118,6 @@ src
     spring.data.mongodb.host=localhost
     spring.data.mongodb.port=27020
     spring.data.mongodb.database=imports
-    
-    # Tiempos de espera de Jobs en ms
-    import.fixedrate=10000
-    etl.fixedrate=15000
     
     # Ruta de archivo csv
     csv.file='archivo.csv'
