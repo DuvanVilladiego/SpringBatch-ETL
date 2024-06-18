@@ -35,7 +35,7 @@ public class Constants {
 	public static final String MONGO_COLLECTION_PROCESS_USERS = "processed_users";
 
 	// CVS (PARTE DE RESOURCES)
-	public static final String CSV_CLASSPATH = "${csv.file}";
+	public static final String CSV_CLASSPATH_VARIABLE = "${csv.file}";
 	public static final String CSV_DELIMITER = ",";
 
 }
