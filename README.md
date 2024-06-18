@@ -96,7 +96,7 @@ src
     ```
 
 2. **Configuraciones la base de datos:**
-  - Ejecute los scripts `schema-drop-postgresql` y `user-table`.
+  - Ejecute los scripts `schema-postgresql` y `user-table`.
   - Asegúrate de que la configuración de la base de datos en `application.properties` sea correcta.
   - Los tiempos de espera de los Jobs ImportUser y ProcessUser estan configurados en `10000` y `15000` milisegundos respectivamente.
   - Es posible personalizar el ruta del archivo cvs desde donde se extraeran los datos.
