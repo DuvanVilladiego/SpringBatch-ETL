@@ -4,8 +4,6 @@
 
 Esta aplicación batch en Java utiliza Spring Batch para leer datos de un archivo CSV, realizar una transformación de datos y almacenarlos en una base de datos. Adicionalmente, se implementa un proceso ETL que extrae datos de una base de datos fuente, transforma los datos, y carga los datos transformados en otra base de datos destino.
 
-## Requisitos
-
 1. **Lectura de Datos**
    - Cuenta con un Job en Spring Batch que lee un archivo CSV con los siguientes campos: `id`, `nombre`, `email`.
 
@@ -85,6 +83,8 @@ src
 
 - Java 17 o superior
 - Maven 3.6 o superior
+- Postgres
+- MongoDb
 
 ### Instrucciones
 
@@ -96,7 +96,7 @@ src
     ```
 
 2. **Configuraciones la base de datos:**
-
+  - Ejecute los scripts `schema-drop-postgresql` y `user-table`.
   - Asegúrate de que la configuración de la base de datos en `application.properties` sea correcta.
   - Es posible personalizar los tiempos de espera de cada Job ya que trabajan de forma independiente, los valroes estan en `milisegundos`.
   - Es posible personalizar el ruta del archivo cvs desde donde se extraeran los datos.
