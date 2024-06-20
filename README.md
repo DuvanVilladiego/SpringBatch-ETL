@@ -123,19 +123,19 @@ src
     csv.file='archivo.csv'
     ```
 
-4. **Construir el proyecto:**
+3. **Construir el proyecto:**
 
     ```bash
     mvn clean install
     ```
 
-5. **Ejecutar la aplicación:**
+4. **Ejecutar la aplicación:**
 
     ```bash
     mvn spring-boot:run
     ```
 
-6. **Verificar los resultados:**
+5. **Verificar los resultados:**
 
     - Para el primer Job (lectura de CSV y almacenamiento en base de datos), los datos procesados se guardarán en la base de datos configurada.
     - Para el segundo Job (proceso ETL), asegúrate de tener la base de datos fuente y destino configuradas correctamente en `application.properties`.
