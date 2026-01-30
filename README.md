@@ -108,7 +108,24 @@ src
 
    ```properties
    spring.application.name=etl-migration
-   ...
+   
+   # Postgres configuration
+   spring.datasource.url=jdbc:postgresql://localhost:5432/batchdb
+   spring.datasource.username=postgres
+   spring.datasource.password=root
+   spring.datasource.driver-class-name=org.postgresql.Driver
+
+   # Spring Batch configuration
+   spring.batch.job.enabled=true
+   spring.batch.jdbc.initialize-schema=always
+
+   # MongoDB configuration
+   spring.data.mongodb.host=localhost
+   spring.data.mongodb.port=27020
+   spring.data.mongodb.database=imports
+
+   # CSV path
+   csv.file='archivo.csv'
    ```
 
 3. **Build the project:**
